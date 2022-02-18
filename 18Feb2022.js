@@ -207,14 +207,17 @@ class LinkedList{
     }
 
     reverse(){
-        let current; 
-        current = this.head; 
+        let current = this.head; 
         this.head = this.tail; 
-        this.tail = this.head; 
+        this.tail = current
+        let next = null; let prev = null;
         
-        /* while(current){
-
-        } */
-
+        while(current){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return this;
     }
 }
