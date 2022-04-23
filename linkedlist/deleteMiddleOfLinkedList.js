@@ -74,3 +74,30 @@ class LinkedList {
     return arr;
   }
 }
+
+function deleteMiddle() {
+  let result = this.head;
+  let current = this.head;
+  let prev = result;
+
+  while (current && current.next) {
+    prev = result;
+    result = result.next;
+    current = current.next.next;
+  }
+
+  prev.next = result.next;
+
+  result.next = null;
+
+  return result;
+}
+
+let list = new LinkedList();
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+list.push(5);
+console.log(deleteMiddle.call(list));
+list.print();
